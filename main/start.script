@@ -1,3 +1,4 @@
+local cnt = 0
 
 
 function init( self )
@@ -7,13 +8,17 @@ end
 
 
 function update( self, dt )
-	print( "Updating main..." )
+	cnt = cnt + 1
+	if cnt > 100 then 
+		pprint( "Main updating..." )
+		cnt = 0
+	end
 end
 
 
 function on_message( self, message_id, message, sender )
 	if message_id == hash( "loadLevel" ) then
-		msg.post( "screenmaster", "load", { level = "levelB" } )
+		msg.post( "screenmaster", "load", { level = "levelA" } )
 	end
 end
 

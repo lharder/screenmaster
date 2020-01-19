@@ -1,19 +1,32 @@
+local cnt = 0
+
+
 function init(self)
+	msg.post( ".", "acquire_input_focus" )
 	pprint( "Level A loaded!"  )
 end
 
 
 
 function update(self, dt)
-	pprint( "Level A updating..." )
+	cnt = cnt + 1
+	if cnt > 100 then 
+		pprint( "Level A updating..." )
+		cnt = 0
+	end
 end
 
 
 function on_message(self, message_id, message, sender)
-	pprimt( "Level A received message: " .. message_id )
+	pprimt( "Level A received message: " .. tostring( message_id ) )
 end
 
 
 function on_input(self, action_id, action)
-	pprimt( "Level A receiving input: " .. action_id )
+	pprint( "Level A receiving input: " .. tostring( action_id ) )
+end
+
+
+function final( self )
+	msg.post( ".", "release_input_focus" )
 end

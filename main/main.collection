@@ -1,23 +1,7 @@
 name: "main"
-scale_along_z: 0
-embedded_instances {
+instances {
   id: "screenmaster"
-  data: "components {\n"
-  "  id: \"script\"\n"
-  "  component: \"/screenmaster/screenmaster.script\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  ""
+  prototype: "/screenmaster/screenmaster.go"
   position {
     x: 0.0
     y: 0.0
@@ -35,6 +19,7 @@ embedded_instances {
     z: 1.0
   }
 }
+scale_along_z: 0
 embedded_instances {
   id: "start"
   data: "components {\n"

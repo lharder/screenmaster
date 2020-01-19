@@ -1,16 +1,24 @@
-go.property( "currentLevel", hash( "" ) )
+local currentLevel = nil
 
 
 -- ----------------------------------
 local function load( levelName )
-	local previous = go.get( "#", "currentLevel" )
-	if previous ~= hash( "" ) then
-		msg.post( "#" .. previous, "unload" ) 
+	local url = nil
+
+	-- unload the current level first
+	if currentLevel then
+		url = currentLevel .. "#proxy"
+		msg.post( url, "release_input_focus" )
+		msg.post( url, "unload" ) 
 	end
 
-	--msg.post( "#" .. levelName .. "proxy", "load" )
-	msg.post( levelName .. "#proxy", "load" )
-	go.set( "#", "currentLevel", hash( levelName ) )
+	-- load the new level as current
+	url = levelName .. "#proxy"
+	msg.post( url, "load" )
+	currentLevel = levelName
+
+	-- send user input to the new level
+	msg.post( url, "acquire_input_focus" )
 end
 
 
