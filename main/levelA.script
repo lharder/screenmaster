@@ -1,0 +1,19 @@
+function init(self)
+	pprint( "Level A loaded!"  )
+end
+
+
+
+function update(self, dt)
+	pprint( "Level A updating..." )
+end
+
+
+function on_message(self, message_id, message, sender)
+	pprimt( "Level A received message: " .. message_id )
+end
+
+
+function on_input(self, action_id, action)
+	pprimt( "Level A receiving input: " .. action_id )
+end

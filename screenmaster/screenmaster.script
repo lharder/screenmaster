@@ -1,0 +1,37 @@
+go.property( "currentLevel", hash( "" ) )
+
+
+-- ----------------------------------
+local function load( levelName )
+	local previous = go.get( "#", "currentLevel" )
+	if previous ~= hash( "" ) then
+		msg.post( "#" .. previous, "unload" ) 
+	end
+
+	--msg.post( "#" .. levelName .. "proxy", "load" )
+	msg.post( levelName .. "#proxy", "load" )
+	go.set( "#", "currentLevel", hash( levelName ) )
+end
+
+
+-- ---------------------------------
+function init( self )
+end
+
+
+
+function on_message( self, message_id, message, sender ) 
+	if message_id == hash( "proxy_loaded" ) then
+		-- callback message from proxies after loading collection
+		print( "Level loaded: " .. sender )
+		
+		msg.post( sender, "init" )
+		msg.post( sender, "enable" )
+		print( "Level activated: " .. sender )
+
+	elseif message_id == hash( "load" ) then
+		load( message.level )
+	end
+	
+end
+

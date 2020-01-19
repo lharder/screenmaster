@@ -1,0 +1,23 @@
+
+
+function init( self )
+	print( "Welcome to the game...!" )
+	msg.post( ".", "loadLevel" )
+end
+
+
+function update( self, dt )
+	print( "Updating main..." )
+end
+
+
+function on_message( self, message_id, message, sender )
+	if message_id == hash( "loadLevel" ) then
+		msg.post( "screenmaster", "load", { level = "levelB" } )
+	end
+end
+
+
+function on_input( self, action_id, action )
+end
+
