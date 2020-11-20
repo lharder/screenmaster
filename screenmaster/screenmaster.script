@@ -1,25 +1,4 @@
-local currentLevel = nil
-
-
--- ----------------------------------
-local function load( levelName )
-	local url = nil
-
-	-- unload the current level first
-	if currentLevel then
-		url = currentLevel .. "#proxy"
-		msg.post( url, "release_input_focus" )
-		msg.post( url, "unload" ) 
-	end
-
-	-- load the new level as current
-	url = levelName .. "#proxy"
-	msg.post( url, "load" )
-	currentLevel = levelName
-
-	-- send user input to the new level
-	msg.post( url, "acquire_input_focus" )
-end
+local screenmaster = require( "screenmaster.screenmaster" )
 
 
 -- ---------------------------------
@@ -38,7 +17,7 @@ function on_message( self, message_id, message, sender )
 		print( "Level activated: " .. sender )
 
 	elseif message_id == hash( "load" ) then
-		load( message.level )
+		screenmaster:load( message.level )
 	end
 	
 end
