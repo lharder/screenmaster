@@ -1,6 +1,6 @@
 # Screenmaster
 
-Manages screen handling in a game by naming convention:
+#### Manages screen handling in a game by naming convention:
 
 1. Include a gameobject for every level in the game's main collection (e.g. ID = "levealA", "levelB", ... )
 
@@ -10,9 +10,10 @@ Manages screen handling in a game by naming convention:
 
 4. From any other gameobject, send a message to the screenmaster gameobject to load a new screen:
 
-####Load a new level:
+#### Load a new level:
 	msg.post( "main:/screenmaster", "load", { level = "levelA" } )
 
+#### Message passing from one screen to the next:
 Optionally, you may want to pass on some information from one screen to the next. While this scenario can be solved with global variables, Screenmaster allows for arbitrary messages to be passed to any game object in the newly loaded screen collection. 
 
 In that case, load the next screen with a messages parameter:
