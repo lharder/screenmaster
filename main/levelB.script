@@ -1,7 +1,8 @@
+local screenmaster = require( "screenmaster.screenmaster" )
 local cnt = 0
 
 
-function init(self)
+function init( self )
 	msg.post( ".", "acquire_input_focus" )
 	pprint( "Level B loaded!"  )
 end

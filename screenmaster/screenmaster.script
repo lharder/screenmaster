@@ -17,7 +17,7 @@ function on_message( self, message_id, message, sender )
 		print( "Level activated: " .. sender )
 
 	elseif message_id == hash( "load" ) then
-		screenmaster:load( message.level )
+		screenmaster:load( message.level, message.messages )
 	end
 	
 end

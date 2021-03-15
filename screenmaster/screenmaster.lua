@@ -5,7 +5,7 @@ function Screenmaster.get()
 		local this = {}
 		this.screenname = nil
 		
-		function this:load( screenname )
+		function this:load( screenname, messages )
 			local url = nil
 
 			-- unload the current level first
@@ -22,6 +22,16 @@ function Screenmaster.get()
 
 			-- send user input to the new level
 			msg.post( url, "acquire_input_focus" )
+
+			-- allow for initialization messages to be  
+			-- sent after loading a new screen
+			if messages then 
+				timer.delay( 0.1, false, function()
+					for url, message in pairs( messages ) do
+						msg.post( url, "screenmaster:loaded", message )
+					end
+				end )
+			end
 		end
 		
 
