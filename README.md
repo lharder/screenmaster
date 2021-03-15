@@ -2,7 +2,7 @@
 
 #### Manages screen handling in a game by naming convention:
 
-1. Include a gameobject for every level in the game's main collection (e.g. ID = "levealA", "levelB", ... )
+1. Include a gameobject for every level in the game's main collection (e.g. ID = "levelA", "levelB", ... )
 
 2. Add a collectionproxy with ID = "proxy" to each level gameobject ("levelA#proxy") with the appropriate collection selected
 
