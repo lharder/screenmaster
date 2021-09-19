@@ -15,23 +15,28 @@ function Screenmaster.get()
 				msg.post( url, "unload" ) 
 			end
 
-			-- load the new level as current
-			url = screenname .. "#proxy"
-			msg.post( url, "load" )
-			this.screenname = screenname
+			-- allow for unloading to complete: important
+			-- if a reload of the same level is intended!
+			timer.delay( 0.1, false, function()
+				-- load the new level as current
+				url = screenname .. "#proxy"
+				msg.post( url, "load" )
+				this.screenname = screenname
 
-			-- send user input to the new level
-			msg.post( url, "acquire_input_focus" )
+				-- send user input to the new level
+				msg.post( url, "acquire_input_focus" )
 
-			-- allow for initialization messages to be  
-			-- sent after loading a new screen
-			if messages then 
-				timer.delay( 0.1, false, function()
-					for url, message in pairs( messages ) do
-						msg.post( url, "screenmaster:loaded", message )
-					end
-				end )
-			end
+				-- allow for initialization messages to be  
+				-- sent after loading a new screen
+				if messages then 
+					timer.delay( 0.1, false, function()
+						for url, message in pairs( messages ) do
+							msg.post( url, "screenmaster:loaded", message )
+						end
+					end )
+				end
+				
+			end)
 		end
 		
 
