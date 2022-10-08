@@ -4,27 +4,27 @@ local cnt = 0
 
 function init( self )
 	msg.post( ".", "acquire_input_focus" ) 
-	pprint( "Level B loaded!"  )
+	pprint( "Level Overlay loaded!"  )
 end
 
 
 
-function update( self, dt )
+function update(self, dt)
 	cnt = cnt + 1
 	if cnt > 100 then 
-		pprint( "Level B updating, " .. dt .. " sec elapsed..." )
+		pprint( "Level Overlay updating, " .. dt .. " sec elapsed..." )
 		cnt = 0
 	end
 end
 
 
 function on_message(self, message_id, message, sender)
-	pprint( "Level B received message: " .. tostring( message_id ) )
+	pprint( "Level Overlay received message: " .. tostring( message_id ) )
 end
 
 
 function on_input(self, action_id, action)
-	pprint( "Level B receiving input: " .. tostring( action_id ) )
+	pprint( "Level Overlay receiving input: " .. tostring( action_id ) )
 end
 
 

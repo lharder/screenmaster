@@ -1,0 +1,21 @@
+local screenmaster = require( "screenmaster.screenmaster" )
+
+
+function init( self )
+	msg.post( ".", "acquire_input_focus" )
+end
+
+
+function on_input( self, action_id, action )
+	if action.pressed then
+		msg.post( "main:/screenmaster" , "removeOverlay", { overlay = "levelOverlay" } )
+	end
+end
+
+
+function on_message( self, message_id, message, sender )
+	if message_id == hash( "screenmaster:loaded" ) then
+		pprint( "I received this message on initialization:" )
+		pprint( message )
+	end
+end

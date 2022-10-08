@@ -2,11 +2,6 @@ local screenmaster = require( "screenmaster.screenmaster" )
 
 
 -- ---------------------------------
-function init( self )
-end
-
-
-
 function on_message( self, message_id, message, sender ) 
 	if message_id == hash( "proxy_loaded" ) then
 		-- callback message from proxies after loading collection
@@ -18,6 +13,13 @@ function on_message( self, message_id, message, sender )
 
 	elseif message_id == hash( "load" ) then
 		screenmaster:load( message.level, message.messages )
+
+	elseif message_id == hash( "loadOverlay" ) then
+		screenmaster:loadOverlay( message.overlay, message.messages )
+		
+	elseif message_id == hash( "removeOverlay" ) then
+		screenmaster:removeOverlay( message.overlay )
+		
 	end
 	
 end

@@ -1,14 +1,33 @@
 local screenmaster = require( "screenmaster.screenmaster" )
 
 
+-- Beware: disabled nodes DO receive clicks! 
+-- Totally unexpected behavior, correct!
+function guiIsClicked( node, action_id, action )
+	if node == nil then return false end
+	if action_id == hash( "touch" ) and action.pressed then 
+		return gui.is_enabled( node ) and gui.pick_node( node, action.x, action.y ) 
+	end
+	return false
+end
+
+
+
 function init( self )
 	msg.post( ".", "acquire_input_focus" )
+
+	self.nLevelA = gui.get_node( "button" )
+	self.nLevelOverlay = gui.get_node( "btnOverlay" )
 end
 
 
 function on_input( self, action_id, action )
-	if action.pressed then
+	if guiIsClicked( self.nLevelA, action_id, action ) then
 		msg.post( "main:/screenmaster" , "load", { level = "levelA" } )
+
+	elseif guiIsClicked( self.nLevelOverlay, action_id, action ) then
+		msg.post( "main:/screenmaster" , "loadOverlay", { overlay = "levelOverlay" } )
+		
 	end
 end
 

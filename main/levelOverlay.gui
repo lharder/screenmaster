@@ -1,4 +1,4 @@
-script: "/main/levelB.gui_script"
+script: "/main/levelOverlay.gui_script"
 fonts {
   name: "system_font"
   font: "/builtins/fonts/system_font.font"
@@ -11,8 +11,65 @@ background_color {
 }
 nodes {
   position {
-    x: 700.0
-    y: 500.0
+    x: 864.0
+    y: 234.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 2.34
+    w: 1.0
+  }
+  size {
+    x: 500.0
+    y: 200.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "box"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 0.5
+  template_node_child: false
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+}
+nodes {
+  position {
+    x: 2.0
+    y: 41.0
     z: 0.0
     w: 1.0
   }
@@ -42,9 +99,10 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Load Level A"
+  text: "I am an Overlay..... \n"
+  "(with an active, but frozen-in-time level underneath)"
   font: "system_font"
-  id: "button"
+  id: "text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -62,6 +120,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
+  parent: "box"
   layer: ""
   inherit_alpha: true
   alpha: 1.0
@@ -76,8 +135,8 @@ nodes {
 }
 nodes {
   position {
-    x: 904.0
-    y: 400.0
+    x: 0.0
+    y: -47.0
     z: 0.0
     w: 1.0
   }
@@ -94,8 +153,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 100.0
+    y: 50.0
     z: 0.0
     w: 1.0
   }
@@ -107,9 +166,9 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Overlay"
+  text: "Close"
   font: "system_font"
-  id: "btnOverlay"
+  id: "text1"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -127,6 +186,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
+  parent: "box"
   layer: ""
   inherit_alpha: true
   alpha: 1.0

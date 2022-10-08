@@ -3,7 +3,7 @@ local cnt = 0
 
 
 function init( self )
-	msg.post( ".", "acquire_input_focus" )
+	msg.post( ".", "acquire_input_focus" ) 
 	pprint( "Level A loaded!"  )
 end
 
@@ -12,7 +12,7 @@ end
 function update(self, dt)
 	cnt = cnt + 1
 	if cnt > 100 then 
-		pprint( "Level A updating..." )
+		pprint( "Level A updating, " .. dt .. " sec elapsed..." )
 		cnt = 0
 	end
 end
